@@ -1,0 +1,229 @@
+<!-- 
+    S U P P O R T
+    - - - - - - -
+    Web: ctrlq.org
+    Twitter: @labnol
+    Email: amit@labnol.org
+-->
+
+<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+		<!-- jQuery -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 
+		<!-- bootstrap -->
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="site.css">
+		
+		<title>PoP Teacher Training Resource</title>
+</head>
+
+<body>
+
+<ul>
+    <li><?var url = getScriptUrl();?><a href='<?=url?>?page=form'>Upload Resource Material</a></li>
+    <li><?var url = getScriptUrl();?><a href='<?=url?>?page=teacherinfo'>Upload Teacher Information</a></li>
+</ul>
+<div class="logo-bg">
+<img class="logo" src="https://d2gwf2att0698u.cloudfront.net/wp-content/uploads/2014/03/PoPLogo_color-01-01.png" width="17%" />
+</div>
+<div class="bg-img">
+<div class="overlay"></div>
+<form id="myForm">
+<h1>Pencils of Promise Teacher Training Upload</h1>
+
+    <input type="text" id="title-text"  name="title" class="formlesson" placeholder="Lesson Title">
+    <input type="text" id="desc" name="description" class="formdesc" placeholder="Description of the Lesson">
+
+    <input type="file"  class="upload" name="myFile">
+    <input type="submit" class="submit" value="Submit"
+          onclick="this.value='Uploading..';
+                    google.script.run.withSuccessHandler(fileUploaded)
+                    .uploadFiles(this.parentNode);
+                    google.script.run.withSuccessHandler(smsText)
+                    .sendSMS(title.value);
+                    return false;">
+                    </form>
+</div>
+<div id="output"></div>
+
+</body>
+<script>
+var title = document.getElementById('title-text');
+    function fileUploaded(status) {
+        document.getElementById('myForm').style.display = 'none';
+        document.getElementById('output').innerHTML = status;
+    }
+</script>
+<!--<script>
+     function smsText(message){
+     document.getElementById('title-text').value = message;
+     }
+    //function sendSMS(Body){
+  //   document.getElementById('title-text').innerHTML = Body;
+    //}
+</script>-->
+
+<style>
+ html{
+  font-size: 3 rem;
+  text-decoration: none;
+
+}
+
+ul {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 26px;
+    list-style-type: none;
+    padding: 0;
+    font-size: 16px;
+    float: left !important; 
+    line-height: 1.4;
+    font-family: inherit; 
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-margin-start: 40px;
+    border: 1px solid #585858;
+    height: 70px;
+    margin-top: 10px;
+    text-align: center;
+    }
+
+li{
+display: inline;
+line-height: 4.3em;
+padding: .4em;
+margin-left: 30px;
+
+
+}
+
+a{
+text-transform: uppercase;
+color: #585858 !important;
+
+}
+
+li:hover{
+transition: border 0.1s ease-in-out;
+border-top: 5px solid #f7b205;
+position: relative;
+}
+
+a:hover{
+text-decoration: none;
+}
+
+
+
+h1{
+text-align: center;
+color: white;
+width: 600px;
+font-size: 35px;
+padding-top: 0px;
+font-family: 'Helvetica Neue','Helvetica', sans-serif;
+font-weight: 200;
+font-style: normal;
+color: #ffffff;
+text-rendering: optimizeLegibility;
+margin-top: 0.2 rem;
+margin-left: -50px;
+margin-bottom: 30px;
+}
+
+form{
+border: 0;
+padding-top: 120px;
+margin-left: 350px;
+}
+
+
+input<!-- Targeting the 'Submit' Button -->{
+ border: 0;
+ display:block; 
+ margin: 25px;
+ margin-left: 400px;
+}
+
+input[type="text"]{
+ border-radius: 7px;
+ height: 50px;
+ width: 500px;
+ margin-bottom: 30px;
+}
+
+.upload{
+height: 50px;
+}
+/*text{
+color: #808080;
+font-size: 3.5em;
+}*/
+
+.submit{
+margin-top: 30px;
+float: left;
+font-family: 'Helvetica Neue','Helvetica', sans-serif;
+size: 66px;
+width: 200px;
+background-color 0.3s ease-in-out,color 0.3s ease-in-out,border-color 0.3s ease-in-out
+cursor: pointer;
+text-decoration: none;
+text-align: center;
+display: inline-block;
+background-color: #585858;
+color: #ffffff;
+padding-top: 1 rem;
+padding-bottom: 1.0625 rem;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 7px;
+line-height: 4;
+text-transform: uppercase;
+margin-left: 150px;
+}
+
+#output{
+font-size: 15px;
+color: white;
+margin-top: -500px;
+margin-left: 200px;
+}
+
+/*.logo-bg{
+display: inline-block;
+width: 100%;
+background-color: white;
+}*/
+
+.logo{
+margin: 0;
+padding: 0;
+display: inline;
+margin-left: 30px;
+float: left;
+padding-right: 50px;
+margin-top: -67px;
+padding-bottom: 20px;
+}
+
+.bg-img{
+width: 100%;
+height: 100%;
+background: url('https://dl.dropboxusercontent.com/s/bv97m7bzcg7cwd0/teacherTraining.jpg?dl=0') center center no-repeat;
+background-size: cover;
+}
+
+div.overlay{
+opacity: 0.9;
+}
+
+</style>
