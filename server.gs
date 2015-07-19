@@ -44,8 +44,8 @@ function uploadFiles(form) {
 function sendSMS(Body) {
   // Get account SID and auth token here:
   //   https://www.twilio.com/user/account
-  var accountSid = "AC54686039a49513b5495b7a7157179aaa";
-  var authToken = "26067b830e0e912c368947bea3c3fefa";
+  var accountSid = "****";
+  var authToken = "****";
   var url = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid + "/SMS/Messages.json";
   var options = {
     method: "post",
@@ -54,8 +54,8 @@ function sendSMS(Body) {
     },
     payload: {
       // From is one of your Twilio phone numbers
-      From: "+17324918257",
-      To: "+16099023687",
+      From: "+17777777777",
+      To: "+14444444444",
       Body: "Mrs. Smith, a new resource entitled '" + Body + "' has just been uploaded for you! Please check your PoP Google Drive when you can!"
     }
   };
